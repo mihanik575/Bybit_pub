@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  bybit_api:
+    container_name: bybit_api
+    build: project
+    volumes:
+      - ./project:/usr/src
+    networks:
+      - my_net
+    entrypoint: >
+      sh -c "
+        echo 'Starting bybit_api app...' &&
+        python3 main.py
+      "
+
+networks:
+  my_net:
+    name: my_net
